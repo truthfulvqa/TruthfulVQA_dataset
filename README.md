@@ -1,116 +1,106 @@
-# 🦉 TruthfulVQA
+## TruthfulVQA
 
-> **A Large-Scale Multimodal Truthfulness Benchmark**
-
----
-
-## 📢 Introduction
-
-TruthfulVQA is the first large-scale multimodal truthfulness benchmark built with rigorous human-in-the-loop verification. We collected over 5,000 visually misleading images, annotated by 50 professional annotators, and—critically—each sample was independently reviewed by five professionals to ensure robust and reliable evaluation.
-
-We propose a three-tier human-written prompt system that systematically probes models across increasing levels of reasoning complexity, enabling fine-grained diagnosis of hallucination and misinformation vulnerabilities in MLLMs.
+> A Large-Scale Multimodal Truthfulness Benchmark
 
 ---
 
-## 🚀 Quick Start
+### Overview
+
+TruthfulVQA is a large-scale multimodal truthfulness benchmark built with rigorous human-in-the-loop verification. It contains 5,000+ visually misleading images annotated by 50 professional annotators. Each sample is independently reviewed by five professionals to ensure robust and reliable evaluation.
+
+We introduce a three-tier, human-authored prompt design that systematically probes models across increasing levels of reasoning complexity, enabling fine-grained diagnosis of hallucination and misinformation vulnerabilities in MLLMs.
+
+---
+
+### Table of Contents
+- **Overview**
+- **Quick Start**
+- **Dataset Structure**
+- **Data Fields**
+- **Key Features**
+- **Citation**
+
+---
+
+## Quick Start
 
 ```python
 from datasets import load_dataset
 
 # Load the dataset from local parquet files
-dataset = load_dataset("parquet", data_files="data/validation-*.parquet", split="validation")
+dataset = load_dataset(
+    "parquet",
+    data_files="data/validation-*.parquet",
+    split="validation",
+)
+
+# Peek a sample
+sample = dataset[0]
+print(sample["question"], sample["options"], sample["answer"])
 ```
 
 ---
 
-## 🧩 Dataset Structure
+## Dataset Structure
 
-TruthfulVQA covers the following categories of truthfulness challenges:
+TruthfulVQA covers the following 8 categories and 21 subcategories of truthfulness challenges:
 
-<details>
-<summary>1️⃣ Information Hiding</summary>
+### Information Hiding
+- Visual information distortion
+- Blurring and low-resolution processing
+- Feature concealment and information masking
 
-- 🖼️ Visual information distortion
-- 🔍 Blurring / low-resolution processing
-- 🕵️‍♂️ Feature concealment and information masking
-</details>
+### Feature Forgery
+- Physical feature manipulation
+- Natural feature confusion
+- Insertion of fake objects or elements
 
-<details>
-<summary>2️⃣ Feature Forgery</summary>
+### Perspective Restriction
+- Cropped or partial observation
+- Unconventional shooting angles
+- Shape distortion caused by natural phenomena
 
-- 🧑‍🎨 Physical feature manipulation
-- 🦄 Natural feature confusion
-- 🏗️ Insertion of fake objects or elements
-</details>
+### Contextual Bias
+- Background interference
+- Manipulation of emotional atmosphere
 
-<details>
-<summary>3️⃣ Perspective Restriction</summary>
+### Information Forgery
+- Factual fabrication
+- Image manipulation
+- False reasoning
 
-- ✂️ Cropped or partial observation
-- 📐 Unconventional shooting angles
-- 🌪️ Shape distortion caused by natural phenomena
-</details>
+### Fictional Information
+- Fabricated flags and maps
+- Imaginary species
 
-<details>
-<summary>4️⃣ Contextual Bias</summary>
+### Imitative Falsehood
+- Misapplied reasoning transfer
+- Reinforcement of semantic bias
+- Inheritance of false information
 
-- 🏞️ Background interference
-- 🎭 Manipulation of emotional atmosphere
-</details>
-
-<details>
-<summary>5️⃣ Information Forgery</summary>
-
-- 📰 Factual fabrication
-- 🖌️ Image manipulation
-- 🧠 False reasoning
-</details>
-
-<details>
-<summary>6️⃣ Fictional Information</summary>
-
-- 🚩 Fabricated flags and maps
-- 🐉 Imaginary species
-</details>
-
-<details>
-<summary>7️⃣ Imitative Falsehood</summary>
-
-- 🔄 Misapplied reasoning transfer
-- 🧩 Reinforcement of semantic bias
-- 🧬 Inheritance of false information
-</details>
-
-<details>
-<summary>8️⃣ Eye Illusion</summary>
-
-- 👀 Perceptual multiplicity
-- 🌀 Optical illusions
-</details>
+### Eye Illusion
+- Perceptual multiplicity
+- Optical illusions
 
 ---
 
-## 📝 Data Fields
+## Data Fields
 
-| Field           | Description                                 |
-|:----------------|:--------------------------------------------|
-| `question_id`   | Unique identifier for each question         |
-| `question`      | The question text                           |
-| `image`         | The associated image                        |
-| `options`       | Multiple-choice options                     |
-| `answer`        | The correct answer                          |
-| `category`      | Main category of the truthfulness challenge |
-| `subcategory`   | Specific type of truthfulness challenge     |
-| `level`         | Difficulty level of the question            |
-
----
-
-## 🌟 Highlights
-
-- 🧑‍⚖️ Rigorous human review for high-quality data
-- 🏆 Multi-level reasoning probes for fine-grained model diagnosis
-- 🖼️ Rich real-world scenarios of visual misinformation
+| Field | Description |
+|:------|:------------|
+| `question_id` | Unique identifier for each question |
+| `question` | The question text |
+| `image` | The associated image |
+| `options` | Multiple-choice options |
+| `answer` | The correct answer |
+| `category` | Main category of the truthfulness challenge |
+| `subcategory` | Specific type of truthfulness challenge |
+| `level` | Difficulty level of the question |
 
 ---
 
-> 📬 For collaboration or questions, contact: truthfulvqa@163.com
+## Key Features
+
+- **Rigorous Human Review**: High-quality data validated by professional annotators.
+- **Multi-Level Reasoning**: Fine-grained model diagnosis across complexity tiers.
+- **Real-World Scenarios**: Rich examples of visual misinformation.
