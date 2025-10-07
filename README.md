@@ -8,7 +8,7 @@
 
 TruthfulVQA is a large-scale multimodal truthfulness benchmark built with rigorous human-in-the-loop verification. It contains 5,000+ visually misleading images annotated by 50 professional annotators. Each sample is independently reviewed by five professionals to ensure robust and reliable evaluation.
 
-We introduce a three-tier, human-authored prompt design that systematically probes models across increasing levels of reasoning complexity, enabling fine-grained diagnosis of hallucination and misinformation vulnerabilities in MLLMs.
+We introduce a three-tier, human-authored prompt design that systematically probes models across increasing levels of reasoning complexity, enabling fine-grained diagnosis of untruthfulness and misinformation vulnerabilities in MLLMs.
 
 ---
 
